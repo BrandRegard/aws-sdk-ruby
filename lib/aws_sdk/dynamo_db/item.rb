@@ -103,7 +103,7 @@ module AWS_SDK
       # @private
       def self.new_from(op, response_object, table, *args)
 
-        config = args.last.is_a?(Hash) ? args.last : AWS.config
+        config = args.last.is_a?(Hash) ? args.last : AWS_SDK.config
 
         table.assert_schema!
         hash_value =

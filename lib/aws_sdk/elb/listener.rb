@@ -90,7 +90,7 @@ module AWS_SDK
       def server_certificate
         desc = _description
         if desc[:listener][:ssl_certificate_id]
-          AWS.memoize do
+          AWS_SDK.memoize do
             arn = desc[:listener][:ssl_certificate_id]
             iam = IAM.new(:config => config)
             iam.server_certificates.find{|cert| cert.arn == arn }

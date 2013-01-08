@@ -32,7 +32,7 @@ module AWS_SDK::Core
                            :add => nil) }
 
       before(:each) do
-        AWS.stub(:response_cache).and_return(cache)
+        AWS_SDK.stub(:response_cache).and_return(cache)
         cached_response.http_response.status = 200
       end
 

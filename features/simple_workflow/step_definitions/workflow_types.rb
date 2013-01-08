@@ -28,7 +28,7 @@ Given /^I get the workflow type by name and version$/ do
 end
 
 Then /^the workflow type should have the following attributes$/ do |table|
-  AWS.memoize do
+  AWS_SDK.memoize do
     table.rows.each do |row|
       @workflow_type.send(row.first).to_s.should == row.last.to_s
     end

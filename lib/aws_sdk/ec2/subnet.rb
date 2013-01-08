@@ -78,7 +78,7 @@ module AWS_SDK
       # @return [NetworkACL::Association] Returns the association between
       #   this subnet and its network ACL.
       def network_acl_association
-        associations = AWS.memoize { vpc.network_acls.map(&:associations) }.flatten
+        associations = AWS_SDK.memoize { vpc.network_acls.map(&:associations) }.flatten
         associations.first{|a| a.subnet == self }
       end
 
@@ -126,7 +126,7 @@ module AWS_SDK
       # @return [RouteTable::Association] Returns the association between
       #   this subnet and its route table.
       def route_table_association
-        assocs = AWS.memoize { vpc.route_tables.map(&:associations) }.flatten
+        assocs = AWS_SDK.memoize { vpc.route_tables.map(&:associations) }.flatten
         assocs.find{|a| a.subnet == self } || assocs.find{|a| a.main? }
       end
 

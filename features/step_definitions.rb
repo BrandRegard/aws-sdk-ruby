@@ -25,11 +25,11 @@ end
 
 Given /^I start a memoization block$/ do
   @http_handler.requests_made.clear if @http_handler.requests_made
-  AWS.start_memoizing
+  AWS_SDK.start_memoizing
 end
 
 After("@memoized") do
-  AWS.stop_memoizing
+  AWS_SDK.stop_memoizing
 end
 
 Then /^the client should not have been called$/ do

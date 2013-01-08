@@ -653,7 +653,7 @@ module AWS_SDK
           let(:resp) { client.new_stub_for(:describe_images) }
 
           before(:each) do
-            AWS.stub(:response_cache).and_return(cache)
+            AWS_SDK.stub(:response_cache).and_return(cache)
             cache.stub(:select).and_return([resp])
           end
 

@@ -63,7 +63,7 @@ module AWS_SDK::Core
       context 'no response cache' do
 
         before(:each) do
-          AWS.stub(:response_cache).and_return(nil)
+          AWS_SDK.stub(:response_cache).and_return(nil)
           resource.stub(:attributes_from_response).and_return({})
         end
 
@@ -97,7 +97,7 @@ module AWS_SDK::Core
                                       :store => nil) }
 
         before(:each) do
-          AWS.stub(:response_cache).and_return(response_cache)
+          AWS_SDK.stub(:response_cache).and_return(response_cache)
           response_cache.stub(:select).and_return([response])
           resource.stub(:attributes_from_response).and_return({})
           resource.stub(:cache_key).and_return("cache key")

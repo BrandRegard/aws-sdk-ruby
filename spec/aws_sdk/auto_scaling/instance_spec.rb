@@ -222,7 +222,7 @@ module AWS_SDK
 
         it 'can be populated from describing a group' do
           client.should_receive(:describe_auto_scaling_groups).and_return(resp)
-          AWS.memoize do
+          AWS_SDK.memoize do
             instance = group.auto_scaling_instances.first
             instance.should be_a(Instance)
             instance.id.should == 'id'

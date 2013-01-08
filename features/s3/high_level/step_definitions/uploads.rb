@@ -17,7 +17,7 @@ require 'digest/md5'
 Given /^the multipart upload threshold is (\d+)(mb|kb)$/ do |size, unit|
   bytes = size.to_i * 1024
   bytes *= 1024 if unit == "mb"
-  AWS.config(:s3_multipart_threshold => bytes)
+  AWS_SDK.config(:s3_multipart_threshold => bytes)
   @bucket = S3::Bucket.new(@bucket.name)
 end
 

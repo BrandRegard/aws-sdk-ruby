@@ -109,7 +109,7 @@ module AWS_SDK
         unless cfg[rails_env]
           raise "config/aws.yml is missing a section for `#{rails_env}`"
         end
-        AWS.config(cfg[rails_env])
+        AWS_SDK.config(cfg[rails_env])
       end
 
     end
@@ -169,7 +169,7 @@ module AWS_SDK
     # Configures AWS to log to the Rails default logger.
     # @return [nil]
     def self.log_to_rails_logger
-      AWS.config(:logger => rails_logger)
+      AWS_SDK.config(:logger => rails_logger)
       nil
     end
 

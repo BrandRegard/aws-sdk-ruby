@@ -62,7 +62,7 @@ module AWS_SDK
 
       # @private
       def cached_tags
-        if cache = AWS.response_cache
+        if cache = AWS_SDK.response_cache
           cache.select(describe_call_name.to_sym).each do |resp|
             if obj = find_in_response(resp)
               return obj.tag_set.inject({}) do |hash, tag|

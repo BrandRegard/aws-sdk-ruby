@@ -21,7 +21,7 @@ module AWS_SDK
 
       before(:each) do
 
-        module ::AWS
+        module ::AWS_SDK
           class Dummy
 
             extend ServiceInterface
@@ -49,7 +49,7 @@ module AWS_SDK
       end
 
       after(:each) do
-        ::AWS.send(:remove_const, :Dummy)
+        ::AWS_SDK.send(:remove_const, :Dummy)
       end
 
       let(:client_class) { ::AWS_SDK::Dummy::Client }

@@ -76,7 +76,7 @@ module AWS_SDK
 
         # This is the default route table and to get the complete list of
         # subnets we have to find all subnets without an association
-        AWS.memoize do
+        AWS_SDK.memoize do
 
           # every subnet
           all_subnets = vpc.subnets.to_a

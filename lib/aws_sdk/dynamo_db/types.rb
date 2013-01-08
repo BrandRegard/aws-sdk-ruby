@@ -66,7 +66,7 @@ module AWS_SDK
       def cast_number number, options = {}
 
         cfg = self.respond_to?(:config) ? self.config :
-          (options[:config] || AWS.config)
+          (options[:config] || AWS_SDK.config)
 
         cfg.dynamo_db_big_decimals ?  BigDecimal.new(number.to_s) : number.to_f
 

@@ -367,12 +367,12 @@ module AWS_SDK::Core
       context 'memoization status' do
 
         it 'should not include "memoizing" if memoization is disabled' do
-          AWS.stub(:memoizing?).and_return(false)
+          AWS_SDK.stub(:memoizing?).and_return(false)
           user_agent.should_not include("memoizing")
         end
 
         it 'should include "memoizing" if memoization is enabled' do
-          AWS.stub(:memoizing?).and_return(true)
+          AWS_SDK.stub(:memoizing?).and_return(true)
           user_agent.should include("memoizing")
         end
 
@@ -499,7 +499,7 @@ module AWS_SDK::Core
 
       before(:each) do
         client.stub(:new_response).and_return(response)
-        AWS.stub(:response_cache).and_return(cache)
+        AWS_SDK.stub(:response_cache).and_return(cache)
       end
 
       it 'should add the low-level response object to the cache' do

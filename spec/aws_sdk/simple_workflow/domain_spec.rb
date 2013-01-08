@@ -151,7 +151,7 @@ module AWS_SDK
             exactly(1).times.
             and_return(response)
 
-          AWS.memoize do
+          AWS_SDK.memoize do
             domain.status.should == :registered
             domain.status.should == :registered
           end

@@ -36,7 +36,7 @@ begin
   end
 
   # find the latest 32-bit EBS Amazon Linux AMI
-  image = AWS.memoize do
+  image = AWS_SDK.memoize do
     amazon_linux = ec2.images.with_owner("amazon").
       filter("root-device-type", "ebs").
       filter("architecture", "i386").

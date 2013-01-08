@@ -12,7 +12,7 @@
 # language governing permissions and limitations under the License.
 
 When /^(.*) rescuing "([^\"]*)":$/ do |i_do_something, class_name, string|
-  error = AWS.module_eval(class_name)
+  error = AWS_SDK.module_eval(class_name)
   begin
     When i_do_something, string
   rescue error => e
@@ -21,7 +21,7 @@ When /^(.*) rescuing "([^\"]*)":$/ do |i_do_something, class_name, string|
 end
 
 When /^(.*) rescuing "([^\"]*)"$/ do |i_do_something, class_name|
-  error = AWS.module_eval(class_name)
+  error = AWS_SDK.module_eval(class_name)
   begin
     When i_do_something
   rescue error => e

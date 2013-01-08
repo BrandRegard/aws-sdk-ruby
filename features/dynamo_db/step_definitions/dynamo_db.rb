@@ -25,7 +25,7 @@ end
 
 After("@dynamo_db") do |scenario|
 
-  AWS.stop_memoizing
+  AWS_SDK.stop_memoizing
 
   @created_tables.each do |table|
     eventually { table.status.should_not == :creating }

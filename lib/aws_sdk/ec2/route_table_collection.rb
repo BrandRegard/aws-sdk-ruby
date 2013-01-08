@@ -50,7 +50,7 @@ module AWS_SDK
       #   This route table is automatically assigned to new subnets
       #   and can not be deleted.
       def main_route_table
-        @main = AWS.memoize { self.find {|rt| rt.main? } } if @main.nil?
+        @main = AWS_SDK.memoize { self.find {|rt| rt.main? } } if @main.nil?
         @main
       end
 
