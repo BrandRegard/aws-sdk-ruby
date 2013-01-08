@@ -13,6 +13,6 @@
 
 Before("@rds") do
 
-  @rds = AWS::RDS.new
+  @rds = AWS_SDK::RDS.new
 
 end

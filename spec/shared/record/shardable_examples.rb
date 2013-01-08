@@ -13,7 +13,7 @@
 
 require 'spec_helper'
 
-module AWS
+module AWS_SDK
   module Record
     shared_examples_for("shardable") do
 

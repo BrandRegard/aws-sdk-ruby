@@ -13,7 +13,7 @@
 
 require 'spec_helper'
 
-module AWS
+module AWS_SDK
   module Core
 
     shared_examples_for "iam policy collection" do

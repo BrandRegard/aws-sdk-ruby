@@ -13,7 +13,7 @@
 
 require File.expand_path(File.dirname(__FILE__) + '/../samples_config')
 
-@cloud_watch = AWS::CloudWatch.new
+@cloud_watch = AWS_SDK::CloudWatch.new
 
 puts "Using CloudWatch endpoint : #{@cloud_watch.client.endpoint}"
 
@@ -48,7 +48,7 @@ print_cloud_watch_alarms_for_account
 
 puts "[#{new_alarm.name}] - Current State :  #{new_alarm.state_value}"
 
-custom_metric = AWS::CloudWatch::Metric.new(test_metric_namespace, test_metric_name)
+custom_metric = AWS_SDK::CloudWatch::Metric.new(test_metric_namespace, test_metric_name)
 
 metric_datapoint_value = 6
 puts "Publishing a metric datapoint to cause ALARM state [#{test_metric_namespace}, #{test_metric_name}, #{metric_datapoint_value}]"

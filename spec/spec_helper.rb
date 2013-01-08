@@ -39,4 +39,4 @@ class String
   end
 end
 
-AWS.eager_autoload!
+AWS_SDK.eager_autoload!

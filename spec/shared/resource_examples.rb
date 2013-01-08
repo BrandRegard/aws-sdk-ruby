@@ -14,7 +14,7 @@
 require 'spec_helper'
 require 'delegate'
 
-module AWS
+module AWS_SDK
 
   shared_examples_for "resource equality method" do |method|
 

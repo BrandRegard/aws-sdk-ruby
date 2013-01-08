@@ -13,7 +13,7 @@
 
 require 'spec_helper'
 
-module AWS
+module AWS_SDK
   class SNS
     shared_examples_for "it has a delivery policy" do
 

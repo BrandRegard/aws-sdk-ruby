@@ -24,7 +24,7 @@ After("@swf") do
   @registered_domains.each do |domain|
     begin
       domain.deprecate
-    rescue AWS::SimpleWorkflow::Errors::DomainDeprecatedFault
+    rescue AWS_SDK::SimpleWorkflow::Errors::DomainDeprecatedFault
       # already deleted
     end
   end

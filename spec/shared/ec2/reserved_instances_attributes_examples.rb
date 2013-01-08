@@ -13,7 +13,7 @@
 
 require 'spec_helper'
 
-module AWS
+module AWS_SDK
 
   shared_examples_for "it has reserved instance attributes" do
 

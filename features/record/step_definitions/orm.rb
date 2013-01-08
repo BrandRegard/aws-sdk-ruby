@@ -13,7 +13,7 @@
 
 Around("@orm", "~@dnamo_db") do |scenario,block|
 
-  class ExampleClass < AWS::Record::Base; end
+  class ExampleClass < AWS_SDK::Record::Base; end
 
   block.call
 
@@ -36,7 +36,7 @@ Given /^I configure the example class with:$/ do |expression|
 end
 
 Given /^I enumerate items with the following expression:$/ do |expression|
-  AWS::SimpleDB.consistent_reads do
+  AWS_SDK::SimpleDB.consistent_reads do
     @records = ExampleClass.module_eval(expression).to_a
   end
 end

@@ -21,7 +21,7 @@ unless domain_name
 end
 
 # get an instance of the simpledb interface using the default configuration
-client = AWS::SimpleDB.new
+client = AWS_SDK::SimpleDB.new
 
 # get the domain with given name
 puts "Checking the existence of domain"
@@ -37,7 +37,7 @@ begin
 		d = client.domains.create domain_name 
 		puts "	Created domain '#{domain_name}'"
 	end
-rescue AWS::SimpleDB::Errors::InvalidParameterValue => e
+rescue AWS_SDK::SimpleDB::Errors::InvalidParameterValue => e
 	puts e.message
 	invalid_name = true
 end

@@ -15,9 +15,9 @@ require 'digest/md5'
 
 Before("@dynamo_db") do
 
-  session = AWS::STS.new.new_session
+  session = AWS_SDK::STS.new.new_session
 
-  @dynamo_db = AWS::DynamoDB.new
+  @dynamo_db = AWS_SDK::DynamoDB.new
   @tables = []
   @created_tables = []
 
@@ -66,7 +66,7 @@ end
 
 Given /^I configure dynamo DB to not convert numbers to big decimal$/ do
   config = @dynamo_db.config.with(:dynamo_db_big_decimals => false)
-  @dynamo_db = AWS::DynamoDB.new(:config => config)
+  @dynamo_db = AWS_SDK::DynamoDB.new(:config => config)
 end
 
 Given /^I have an empty DynamoDB table$/ do

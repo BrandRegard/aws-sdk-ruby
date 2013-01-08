@@ -13,7 +13,7 @@
 
 Before("@data_pipeline") do
 
-  @data_pipeline = AWS::DataPipeline.new
+  @data_pipeline = AWS_SDK::DataPipeline.new
   @data_pipeline_client = @data_pipeline.client
 
   @pipelines = []

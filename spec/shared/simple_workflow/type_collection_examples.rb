@@ -11,7 +11,7 @@
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 
-module AWS
+module AWS_SDK
   class SimpleWorkflow
 
     shared_examples_for "a simple workflow type collection" do

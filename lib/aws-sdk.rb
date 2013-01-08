@@ -11,35 +11,35 @@
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 
-require 'aws/core'
+require 'aws_sdk/core'
 
-require 'aws/auto_scaling/config'
-require 'aws/cloud_front/config'
-require 'aws/cloud_formation/config'
-require 'aws/cloud_search/config'
-require 'aws/cloud_watch/config'
-require 'aws/data_pipeline/config'
-require 'aws/dynamo_db/config'
-require 'aws/ec2/config'
-require 'aws/elasticache/config'
-require 'aws/elastic_beanstalk/config'
-require 'aws/emr/config'
-require 'aws/elb/config'
-require 'aws/iam/config'
-require 'aws/import_export/config'
-require 'aws/glacier/config'
-require 'aws/rds/config'
-require 'aws/route_53/config'
-require 'aws/s3/config'
-require 'aws/simple_db/config'
-require 'aws/simple_email_service/config'
-require 'aws/simple_workflow/config'
-require 'aws/sns/config'
-require 'aws/sqs/config'
-require 'aws/storage_gateway/config'
-require 'aws/sts/config'
+require 'aws_sdk/auto_scaling/config'
+require 'aws_sdk/cloud_front/config'
+require 'aws_sdk/cloud_formation/config'
+require 'aws_sdk/cloud_search/config'
+require 'aws_sdk/cloud_watch/config'
+require 'aws_sdk/data_pipeline/config'
+require 'aws_sdk/dynamo_db/config'
+require 'aws_sdk/ec2/config'
+require 'aws_sdk/elasticache/config'
+require 'aws_sdk/elastic_beanstalk/config'
+require 'aws_sdk/emr/config'
+require 'aws_sdk/elb/config'
+require 'aws_sdk/iam/config'
+require 'aws_sdk/import_export/config'
+require 'aws_sdk/glacier/config'
+require 'aws_sdk/rds/config'
+require 'aws_sdk/route_53/config'
+require 'aws_sdk/s3/config'
+require 'aws_sdk/simple_db/config'
+require 'aws_sdk/simple_email_service/config'
+require 'aws_sdk/simple_workflow/config'
+require 'aws_sdk/sns/config'
+require 'aws_sdk/sqs/config'
+require 'aws_sdk/storage_gateway/config'
+require 'aws_sdk/sts/config'
 
-module AWS
+module AWS_SDK
   register_autoloads(self) do
     autoload :AutoScaling, 'auto_scaling'
     autoload :CloudFormation, 'cloud_formation'
@@ -70,4 +70,4 @@ module AWS
   end
 end
 
-require 'aws/rails'
+require 'aws_sdk/rails'

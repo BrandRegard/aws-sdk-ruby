@@ -14,7 +14,7 @@
 require 'spec_helper'
 require 'delegate'
 
-module AWS
+module AWS_SDK
 
   shared_examples_for "ec2 resource attribute accessor (describe call)" do
 

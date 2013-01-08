@@ -13,7 +13,7 @@
 
 require 'spec_helper'
 
-module AWS
+module AWS_SDK
   class EC2
 
     shared_examples_for 'a tagged ec2 item' do

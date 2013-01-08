@@ -13,7 +13,7 @@
 
 require File.expand_path(File.dirname(__FILE__) + '/../samples_config')
 
-@cloud_watch = AWS::CloudWatch.new
+@cloud_watch = AWS_SDK::CloudWatch.new
 
 puts "Using CloudWatch endpoint : #{@cloud_watch.client.endpoint}"
 

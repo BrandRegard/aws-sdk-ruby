@@ -12,7 +12,7 @@
 # language governing permissions and limitations under the License.
 
 Before("@iam") do
-  @iam = AWS::IAM.new
+  @iam = AWS_SDK::IAM.new
   @iam_client = @iam.client
 
   @created_users = []
@@ -40,7 +40,7 @@ After("@iam") do
   @created_access_keys.each do |access_key|
     begin
       access_key.delete
-    rescue AWS::IAM::Errors::NoSuchEntity
+    rescue AWS_SDK::IAM::Errors::NoSuchEntity
       # some tests delete the access keys they create
     end
   end
@@ -49,7 +49,7 @@ After("@iam") do
   unless @created_account_aliases.empty?
     begin
       @iam.account_aliases.delete(@created_account_aliases.last)
-    rescue AWS::IAM::Errors::NoSuchEntity
+    rescue AWS_SDK::IAM::Errors::NoSuchEntity
       # some tests delete the aliases they create
     end
   end
@@ -57,7 +57,7 @@ After("@iam") do
   @uploaded_signing_certificates.each do |sc|
     begin
       sc.delete
-    rescue AWS::IAM::Errors::NoSuchEntity
+    rescue AWS_SDK::IAM::Errors::NoSuchEntity
       # some tests delete the aliases they create
     end
   end
@@ -71,7 +71,7 @@ After("@iam") do
     begin
       group.users.clear
       group.policies.clear
-    rescue AWS::IAM::Errors::NoSuchEntity
+    rescue AWS_SDK::IAM::Errors::NoSuchEntity
     end
   end
 
@@ -81,10 +81,10 @@ After("@iam") do
       user.login_profile.delete if user.login_profile.exists?
       user.mfa_devices.clear
       user.delete
-    rescue AWS::IAM::Errors::EntityTemporarilyUnmodifiable => e
+    rescue AWS_SDK::IAM::Errors::EntityTemporarilyUnmodifiable => e
       sleep 1
       retry
-    rescue AWS::IAM::Errors::NoSuchEntity
+    rescue AWS_SDK::IAM::Errors::NoSuchEntity
       # some of the test delete the users they created themselves
     end
   end
@@ -95,7 +95,7 @@ After("@iam") do
   unless @created_account_aliases.empty?
     begin
       @iam.account_aliases.delete(@created_account_aliases.last)
-    rescue AWS::IAM::Errors::NoSuchEntity
+    rescue AWS_SDK::IAM::Errors::NoSuchEntity
       # some tests delete the aliases they create
     end
   end

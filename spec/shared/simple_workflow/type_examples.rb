@@ -11,7 +11,7 @@
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 
-module AWS
+module AWS_SDK
   class SimpleWorkflow
 
     shared_examples_for "a simple workflow type" do |config_attributes|
@@ -31,7 +31,7 @@ module AWS
       }
 
       let(:type_symbol) {
-        AWS::Core::Inflection.ruby_name(type_key).to_sym
+        AWS_SDK::Core::Inflection.ruby_name(type_key).to_sym
       }
 
       let(:type_info) {{

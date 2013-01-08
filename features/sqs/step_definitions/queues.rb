@@ -99,7 +99,7 @@ When /^I send the following messages in a batch:$/ do |table|
   messages = table.hashes.map{|h| h['MESSAGE'] }
   begin
     @sent = @queue.batch_send(messages)
-  rescue AWS::SQS::Errors::BatchSendError => e
+  rescue AWS_SDK::SQS::Errors::BatchSendError => e
     @sent = e.sent
     @failures = e.failures
   end

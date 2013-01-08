@@ -25,27 +25,27 @@ end
 
 
 Then /^I should be able to use the returned credentials to make EC2 requests$/ do
-  AWS::EC2.new(@result.credentials).instances.to_a
+  AWS_SDK::EC2.new(@result.credentials).instances.to_a
 end
 
 Then /^I should be able to use the returned credentials to make SNS requests$/ do
-  AWS::SNS.new(@result.credentials).topics.to_a
+  AWS_SDK::SNS.new(@result.credentials).topics.to_a
 end
 
 Then /^I should be able to use the returned credentials to make SQS requests$/ do
-  AWS::SQS.new(@result.credentials).queues.to_a
+  AWS_SDK::SQS.new(@result.credentials).queues.to_a
 end
 
 Then /^I should be able to use the returned credentials to make SimpleDB requests$/ do
-  AWS::SimpleDB.new(@result.credentials).domains.to_a
+  AWS_SDK::SimpleDB.new(@result.credentials).domains.to_a
 end
 
 Then /^I should be able to use the returned credentials to make S3 requests$/ do
-  AWS::S3.new(@result.credentials).buckets.to_a
+  AWS_SDK::S3.new(@result.credentials).buckets.to_a
 end
 
 When /^I ask for federated session credentials$/ do
-  policy = AWS::STS::Policy.new do |p|
+  policy = AWS_SDK::STS::Policy.new do |p|
     p.allow(:actions => "*",
             :resources => "*")
   end
@@ -53,7 +53,7 @@ When /^I ask for federated session credentials$/ do
 end
 
 When /^I ask for federated session credentials only allowing access to SNS$/ do
-  policy = AWS::STS::Policy.new do |p|
+  policy = AWS_SDK::STS::Policy.new do |p|
     p.allow(:actions => "sns:*",
             :resources => "*")
   end
@@ -61,8 +61,8 @@ When /^I ask for federated session credentials only allowing access to SNS$/ do
 end
 
 Then /^I should not be able to use the returned credentials to make SQS requests$/ do
-  lambda { AWS::SQS.new(@result.credentials).queues.to_a }.
-    should raise_error(AWS::SQS::Errors::AccessDenied)
+  lambda { AWS_SDK::SQS.new(@result.credentials).queues.to_a }.
+    should raise_error(AWS_SDK::SQS::Errors::AccessDenied)
 end
 
 Then /^the result should include an ARN for the federated user$/ do

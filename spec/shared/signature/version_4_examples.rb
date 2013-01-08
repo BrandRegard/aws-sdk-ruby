@@ -14,13 +14,13 @@
 require 'spec_helper'
 require 'time'
 
-module AWS
+module AWS_SDK
   shared_examples_for "an authorize v4 request" do
 
     let(:request) { described_class.new }
 
     let(:credentials) {
-      AWS::Core::CredentialProviders::StaticProvider.new({
+      AWS_SDK::Core::CredentialProviders::StaticProvider.new({
         :access_key_id => 'akid',
         :secret_access_key => 'secret',
       })

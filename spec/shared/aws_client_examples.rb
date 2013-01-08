@@ -11,7 +11,7 @@
 # ANY KIND, either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 
-module AWS::Core
+module AWS_SDK::Core
 
   shared_examples_for "an aws client" do |sample_method|
 
@@ -180,7 +180,7 @@ module AWS::Core
         client.with_http_handler{|request, response|
           response.status = 405 # method not allowed
         }.send(method, opts)
-      }.should raise_error(AWS::Errors::ClientError)
+      }.should raise_error(AWS_SDK::Errors::ClientError)
     end
 
     it 'raises client errors for 4xx response codes with a nil response body' do
@@ -189,7 +189,7 @@ module AWS::Core
           response.status = 405 # method not allowed
           response.body = nil
         }.send(method, opts)
-      }.should raise_error(AWS::Errors::ClientError)
+      }.should raise_error(AWS_SDK::Errors::ClientError)
     end
 
     it 'does not retry client errors' do
@@ -255,7 +255,7 @@ module AWS::Core
           resp.status = 500
           requests_made += 1
         }.send(method, opts)
-      rescue AWS::Errors::ServerError
+      rescue AWS_SDK::Errors::ServerError
       end
       requests_made.should == 4
     end
@@ -270,7 +270,7 @@ module AWS::Core
       end
       begin
         client.send(method, opts)
-      rescue AWS::Errors::ServerError
+      rescue AWS_SDK::Errors::ServerError
       end
     end
 
@@ -283,7 +283,7 @@ module AWS::Core
       new_client.config.stub(:max_retries).and_return(5)
       begin
         new_client.send(method, opts)
-      rescue AWS::Errors::ServerError
+      rescue AWS_SDK::Errors::ServerError
       end
       requests_made.should == 6
     end
@@ -293,7 +293,7 @@ module AWS::Core
         client.with_http_handler{|req, resp|
           resp.status = 500
         }.send(method, opts)
-      }.should raise_error(AWS::Errors::ServerError)
+      }.should raise_error(AWS_SDK::Errors::ServerError)
     end
 
     it 'should raise a network error after retries fail due to timeout' do
@@ -404,7 +404,7 @@ module AWS::Core
       it 'should send a user-agent header' do
         http_handler.should_receive(:handle).with do |req, resp|
           req.headers["user-agent"].
-            should =~ %r{aws-sdk-ruby/#{AWS::VERSION} [a-z]+/[0-9.]+ \w+}
+            should =~ %r{aws-sdk-ruby/#{AWS_SDK::VERSION} [a-z]+/[0-9.]+ \w+}
         end
         client_with_handler.send(method, opts)
       end
@@ -427,7 +427,7 @@ module AWS::Core
 
     context 'logging' do
 
-      let(:service) { described_class.to_s.gsub(/^AWS::/, '') }
+      let(:service) { described_class.to_s.gsub(/^AWS_SDK::/, '') }
 
       let(:logger) { double('logger') }
 
@@ -447,7 +447,7 @@ module AWS::Core
             resp.status = 502
             resp.body = 'Service busy'
           end.send(method, opts)
-        rescue AWS::Errors::ServerError
+        rescue AWS_SDK::Errors::ServerError
         end
       end
 
@@ -612,7 +612,7 @@ module AWS::Core
         response.on_complete do |status|
           complete = true
           status.should == :failure
-          response.error.should be_a(AWS::Errors::ServerError)
+          response.error.should be_a(AWS_SDK::Errors::ServerError)
         end
 
         sleep 0.001 until complete
@@ -634,7 +634,7 @@ module AWS::Core
         response.on_complete do |status|
           complete = true
           status.should == :failure
-          response.error.should be_a(AWS::Core::Client::NetworkError)
+          response.error.should be_a(AWS_SDK::Core::Client::NetworkError)
         end
 
         sleep 0.001 until complete
