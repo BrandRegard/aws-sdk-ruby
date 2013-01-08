@@ -2,7 +2,7 @@ $:.unshift(File.dirname(__FILE__) + '/lib')
 require 'aws_sdk/core'
 Gem::Specification.new do |s|
   s.name = 'aws-sdk'
-  s.version = AWS::VERSION
+  s.version = AWS_SDK::VERSION
   s.summary = 'AWS SDK for Ruby'
   s.description = s.summary
   s.license = 'Apache 2.0'
