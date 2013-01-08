@@ -17,7 +17,7 @@ module AWS_SDK::Core
 
     let(:http_handler) { double("http handler") }
 
-    let(:config) { AWS.config.with(:access_key_id => "AKID",
+    let(:config) { AWS_SDK.config.with(:access_key_id => "AKID",
                                    :secret_access_key => "SECRET",
                                    :session_token => "TOKEN",
                                    :http_handler => http_handler) }

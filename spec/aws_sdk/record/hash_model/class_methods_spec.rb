@@ -18,12 +18,12 @@ module AWS_SDK
     describe Model do
 
       before(:each) do
-        AWS.config(:access_key_id => "id", :secret_access_key => "secret")
+        AWS_SDK.config(:access_key_id => "id", :secret_access_key => "secret")
         klass.stub(:name).and_return("ExampleClass")
       end
 
       after(:each) do
-        AWS.config(:access_key_id => nil, :secret_access_key => nil)
+        AWS_SDK.config(:access_key_id => nil, :secret_access_key => nil)
       end
 
       let(:klass) { Class.new(AWS_SDK::Record::HashModel) }

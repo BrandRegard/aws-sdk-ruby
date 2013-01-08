@@ -24,7 +24,7 @@ module AWS_SDK
     end
 
     it 'constructor passes options to Configuration#with' do
-      config = AWS.config.with(:access_key_id => 'a', :secret_access_key => 'b')
+      config = AWS_SDK.config.with(:access_key_id => 'a', :secret_access_key => 'b')
       config.max_retries.should_not eq(123)
       described_class.new(:config => config, :max_retries => 123).
         config.max_retries.should eq(123)

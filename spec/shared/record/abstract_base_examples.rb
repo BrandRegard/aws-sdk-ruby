@@ -33,7 +33,7 @@ module AWS_SDK
 
       klass.string_attr :name
 
-      AWS.config(
+      AWS_SDK.config(
         :access_key_id => "id",
         :secret_access_key => "secret",
         :stub_requests => true)
@@ -48,7 +48,7 @@ module AWS_SDK
 
     after(:each) do
 
-      AWS.config(
+      AWS_SDK.config(
         :access_key_id => nil,
         :secret_access_key => nil,
         :stub_requests => false)

@@ -31,7 +31,7 @@ module AWS_SDK
 
       # Returns a new interface object for this service.  You can override
       # any of the global configuration parameters by passing them in as
-      # hash options.  They are merged with AWS.config or merged
+      # hash options.  They are merged with AWS_SDK.config or merged
       # with the provided +:config+ object.
       #
       #   @ec2 = AWS_SDK::EC2.new(:max_retries => 2)
@@ -42,11 +42,11 @@ module AWS_SDK
       #
       # @option options [Configuration] :config An AWS_SDK::Configuration
       #   object to initialize this service interface object with.  Defaults
-      #   to AWS.config when not provided.
+      #   to AWS_SDK.config when not provided.
       #
       def initialize options = {}
         options = options.dup
-        @config = (options.delete(:config) || AWS.config)
+        @config = (options.delete(:config) || AWS_SDK.config)
         @config = @config.with(options)
         @client = @config.send(Inflection.ruby_name(self.class.name.split('::').last) + '_client')
       end

@@ -35,7 +35,7 @@ module AWS_SDK
       end
 
       it 'should be accessible from the configuration' do
-        config = AWS.config.with(
+        config = AWS_SDK.config.with(
           :access_key_id => 'foo', 
           :secret_access_key => 'bar'
         )

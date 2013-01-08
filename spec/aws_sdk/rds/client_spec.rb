@@ -25,7 +25,7 @@ module AWS_SDK
       let(:handler) { double('handler', :handle => nil) }
 
       let(:config) {
-        AWS.config.with(credentials.merge(:http_handler => handler))
+        AWS_SDK.config.with(credentials.merge(:http_handler => handler))
       }
 
       let(:client) { config.rds_client }

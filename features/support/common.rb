@@ -67,8 +67,8 @@ if ENV['LOGGING'] == 'true'
 end
 
 AfterConfiguration do
-  AWS.config(test_config)
-  handler = AWS_SDK::Core::Http::Handler.new(AWS.config.http_handler) do |req, resp, read_block|
+  AWS_SDK.config(test_config)
+  handler = AWS_SDK::Core::Http::Handler.new(AWS_SDK.config.http_handler) do |req, resp, read_block|
     (@requests_made ||= []) << req
     super(req, resp, &read_block)
     @last_response = resp
@@ -77,13 +77,13 @@ AfterConfiguration do
     attr_reader :requests_made
     attr_reader :last_response
   end
-  AWS.config(:http_handler => handler)
+  AWS_SDK.config(:http_handler => handler)
 end
 
 Before do
   @buckets_created = []
   @sdb_domains_created = []
-  @http_handler = AWS.config.http_handler
+  @http_handler = AWS_SDK.config.http_handler
   @test_config = test_config
 end
 

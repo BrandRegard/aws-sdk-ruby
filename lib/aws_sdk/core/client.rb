@@ -35,8 +35,8 @@ module AWS_SDK
       # @param [Hash] options
       # @option options [Core::Configuration] :config (AWS.config)
       #   The base configuration object to use.  All other options
-      #   are merged with this.  Defaults to the AWS.config.
-      # @option (see AWS.config)
+      #   are merged with this.  Defaults to the AWS_SDK.config.
+      # @option (see AWS_SDK.config)
       def initialize options = {}
 
         options = options.dup # so we don't modify the options passed in
@@ -51,7 +51,7 @@ module AWS_SDK
           end
         end
 
-        @config = (options.delete(:config) || AWS.config)
+        @config = (options.delete(:config) || AWS_SDK.config)
         @config = @config.with(options)
 
         @credential_provider = @config.credential_provider
@@ -125,7 +125,7 @@ module AWS_SDK
       #   no_retry_client = client.with_options(:max_retries => 0)
       #
       # @param [Hash] options
-      # @option (see AWS.config)
+      # @option (see AWS_SDK.config)
       # @return [Client]
       def with_options options
         with_config(config.with(options))
@@ -412,7 +412,7 @@ module AWS_SDK
       # @return [Module]
       #
       def errors_module
-        AWS.const_get(self.class.to_s[/(\w+)::Client/, 1])::Errors
+        AWS_SDK.const_get(self.class.to_s[/(\w+)::Client/, 1])::Errors
       end
 
       def client_request name, options, &read_block
@@ -439,7 +439,7 @@ module AWS_SDK
 
               if
                 cacheable_request?(name, options) and
-                cache = AWS.response_cache and
+                cache = AWS_SDK.response_cache and
                 cached_response = cache.cached(response)
               then
                 cached_response.cached = true
@@ -453,7 +453,7 @@ module AWS_SDK
                 # process the http response
                 response.on_success do
                   send("process_#{name}_response", response)
-                  if cache = AWS.response_cache
+                  if cache = AWS_SDK.response_cache
                     cache.add(response)
                   end
                 end
@@ -514,7 +514,7 @@ module AWS_SDK
         user_agent = "%s aws-sdk-ruby/#{VERSION} %s/%s %s" %
           [config.user_agent_prefix, engine, RUBY_VERSION, RUBY_PLATFORM]
         user_agent.strip!
-        if AWS.memoizing?
+        if AWS_SDK.memoizing?
           user_agent << " memoizing"
         end
         user_agent

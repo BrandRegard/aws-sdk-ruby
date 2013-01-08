@@ -175,7 +175,7 @@ module AWS_SDK
       #     time and was automatically timed out.
       #   
       def status
-        AWS.memoize do
+        AWS_SDK.memoize do
           execution_status == :open ? :open : (close_status || :closed)
         end
       end

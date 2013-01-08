@@ -29,7 +29,7 @@ module AWS_SDK
       object.send(method, { :consistent_read => false }, &block) 
     end
 
-    it 'defaults to true when AWS.config.simple_db_consistent_reads? is true' do
+    it 'defaults to true when AWS_SDK.config.simple_db_consistent_reads? is true' do
       object.config.stub(:simple_db_consistent_reads?).and_return(false)
       object.client.should_receive(client_method).
         with(hash_including(:consistent_read => false)).
@@ -37,7 +37,7 @@ module AWS_SDK
       object.send(method, {}, &block) 
     end
 
-    it 'defaults to false when AWS.config.simple_db_consistent_reads? is false' do
+    it 'defaults to false when AWS_SDK.config.simple_db_consistent_reads? is false' do
       object.config.stub(:simple_db_consistent_reads?).and_return(true)
       object.client.should_receive(client_method).
         with(hash_including(:consistent_read => true)).

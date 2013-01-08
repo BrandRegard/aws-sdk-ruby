@@ -41,4 +41,4 @@ END
   exit 1
 end
 
-AWS.config(config)
+AWS_SDK.config(config)

@@ -46,7 +46,7 @@ module AWS_SDK
       public
       def retrieve_attribute attr, &block
   
-        if cache = AWS.response_cache
+        if cache = AWS_SDK.response_cache
   
           if cache.resource_cache.cached?(cache_key, attr.name)
             return cache.resource_cache.get(cache_key, attr.name)
@@ -64,7 +64,7 @@ module AWS_SDK
         response = yield
   
         if attributes = attributes_from_response(response)
-          if cache = AWS.response_cache
+          if cache = AWS_SDK.response_cache
             cache.resource_cache.store(cache_key, attributes)
           end
           attributes[attr.name] if attributes.key?(attr.name)

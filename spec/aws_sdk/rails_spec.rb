@@ -27,10 +27,10 @@ module AWS_SDK
           ::Rails.stub(:logger).and_return('foo')
 
           AWS_SDK::Rails.log_to_rails_logger
-          logger = AWS.config.logger
+          logger = AWS_SDK.config.logger
 
           # undo the setup
-          AWS.config(:logger => nil)
+          AWS_SDK.config(:logger => nil)
           Object.send(:remove_const, :Rails)
 
           logger.should == 'foo'
@@ -46,10 +46,10 @@ module AWS_SDK
           ::RAILS_DEFAULT_LOGGER = 'bar'
 
           AWS_SDK::Rails.log_to_rails_logger
-          logger = AWS.config.logger
+          logger = AWS_SDK.config.logger
 
           # undo the setup
-          AWS.config(:logger => nil)
+          AWS_SDK.config(:logger => nil)
           Object.send(:remove_const, :Rails)
           Object.send(:remove_const, :RAILS_DEFAULT_LOGGER)
 
@@ -109,14 +109,14 @@ module AWS_SDK
   
           before(:each) do
             ::Rails.stub(:version).and_return('1.1.6')
-            AWS.config(
+            AWS_SDK.config(
               :stub_requests => true,
               :access_key_id => 'id',
               :secret_access_key => 'secret')
           end
   
           after(:each) do
-            AWS.config(
+            AWS_SDK.config(
               :stub_requests => false,
               :access_key_id => nil,
               :secret_access_key => nil)

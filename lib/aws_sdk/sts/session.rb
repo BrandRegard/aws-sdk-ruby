@@ -25,7 +25,7 @@ module AWS_SDK
       # * +:secret_access_key+
       # * +:session_token+
       #
-      # This hash may be passed as-is to {AWS.config} or to the
+      # This hash may be passed as-is to {AWS_SDK.config} or to the
       # constructor of any service interface that supports temporary
       # security credentials from the AWS Security Token Service.
       #
